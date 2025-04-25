@@ -1,5 +1,9 @@
 n = int(input())
-a = list(map(int, input().split()))
+a = []
+while True :
+    x = [int(x) for x in input().split()]
+    a += x
+    if len(a) == n : break
 evens = []
 odds = []
 type = []
@@ -10,16 +14,14 @@ for x in a:
     else:
         odds.append(x)
         type.append('odd')
-evens.sort()
-odds.sort(reverse=True)
+evens.sort(reverse=True)
+odds.sort()
 res = []
-eid = 0
-oid = 0
 for t in type:
     if t == 'even':
-        res.append(evens[eid])
-        eid += 1
+        res.append(evens[-1])
+        evens.pop()
     else:
-        res.append(odds[oid])
-        oid += 1   
+        res.append(odds[-1])
+        odds.pop() 
 print(*res) 
